@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cute Diary</title>
+    <!-- Google Fonts for handwritten aesthetic -->
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Background Bubbles -->
+    <div class="bubbles">
+        <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+        <div class="bubble"></div><div class="bubble"></div>
+    </div>
+
+    <div class="app-container">
+        <!-- Floating Quotes -->
+        <div class="floating-quotes" id="quoteContainer"></div>
+
+        <!-- Landing View: Calendar -->
+        <div id="calendarView" class="view active">
+            <div class="calendar-card glass">
+                <div class="calendar-header">
+                    <button id="prevMonth" class="icon-btn">◀</button>
+                    <h2 id="monthYearDisplay">Month Year</h2>
+                    <button id="nextMonth" class="icon-btn">▶</button>
+                </div>
+                <div class="calendar-grid">
+                    <div class="weekdays-row">
+                        <div class="weekday">Sun</div><div class="weekday">Mon</div>
+                        <div class="weekday">Tue</div><div class="weekday">Wed</div>
+                        <div class="weekday">Thu</div><div class="weekday">Fri</div>
+                        <div class="weekday">Sat</div>
+                    </div>
+                    <div id="calendarDays" class="days-container"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Diary View -->
+        <div id="diaryView" class="view hidden">
+            <button id="backToCalendar" class="icon-btn back-btn">◀ Calendar</button>
+            
+            <div class="diary-layout">
+                <div class="diary-main glass">
+                    <h2 class="date-title" id="diaryDateTitle">Today</h2>
+                    
+                    <div class="mood-section">
+                        <p>How was your day?</p>
+                        <div class="mood-options">
+                            <button class="mood-btn" data-val="1">😢</button>
+                            <button class="mood-btn" data-val="2">😔</button>
+                            <button class="mood-btn" data-val="3">😐</button>
+                            <button class="mood-btn" data-val="4">😊</button>
+                            <button class="mood-btn" data-val="5">😄</button>
+                        </div>
+                        <div id="moodFeedback" class="mood-feedback hidden"></div>
+                    </div>
+
+                    <div class="notebook-container">
+                        <div id="readOnlyContent" class="read-only-content hidden"></div>
+                        <textarea id="diaryContent" placeholder="Write your thoughts here..."></textarea>
+                    </div>
+                    
+                    <div class="action-bar">
+                        <button id="editBtn" class="secondary-btn hidden">Edit Entry ✏️</button>
+                        <button id="saveBtn" class="primary-btn">Save Entry ✨</button>
+                        <span id="saveFeedback" class="save-feedback hidden">Saved! 💛</span>
+                    </div>
+                </div>
+
+                <div class="diary-sidebar">
+                    <div class="timer-card glass">
+                        <h3>Focus Time ⏳</h3>
+                        <div id="timerDisplay" class="timer-display">00:00</div>
+                        <p id="timerMessage" class="timer-msg">Start typing to begin</p>
+                        <button id="resetTimerBtn" class="secondary-btn">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
